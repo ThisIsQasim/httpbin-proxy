@@ -1,2 +1,3 @@
 0.15 Initial repo and proxy setup
 0.10 Research on nginx rate limiting
+1.30 Debugging rate limiting
