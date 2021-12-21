@@ -1,8 +1,8 @@
 version: "3.4"
 
 services:
-  resume:
-    image: nginxinc/nginx-unprivileged:1.21.3
+  nginx:
+    image: nginxinc/nginx-unprivileged:1.21.4
     environment:
     - UPSTREAM_URL=http://httpbin.org
     volumes:
