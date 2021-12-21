@@ -4,6 +4,7 @@ services:
   nginx:
     image: nginxinc/nginx-unprivileged:1.21.4
     environment:
+    - LIMIT_RATE=1r/s
     - UPSTREAM_URL=http://httpbin.org
     volumes:
       - ./default.conf.template:/etc/nginx/templates/default.conf.template
