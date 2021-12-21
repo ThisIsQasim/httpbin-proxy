@@ -1,0 +1,12 @@
+version: "3.4"
+
+services:
+  resume:
+    image: nginxinc/nginx-unprivileged:1.21.3
+    environment:
+    - UPSTREAM_URL=http://httpbin.org
+    volumes:
+      - ./default.conf.template:/etc/nginx/templates/default.conf.template
+    restart: always
+    ports:
+    - 127.0.0.1:8080:8080

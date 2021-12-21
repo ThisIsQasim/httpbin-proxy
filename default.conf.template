@@ -1,0 +1,24 @@
+server {
+    listen       8080;
+    server_name  _;
+    server_tokens off;
+
+    client_max_body_size 100M;
+
+    location / {
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+        proxy_pass ${UPSTREAM_URL};
+    }
+
+    location /health {
+        access_log off;
+        return 204;
+    }
+
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+}
