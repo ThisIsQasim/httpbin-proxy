@@ -8,6 +8,7 @@ def static_limiter_key():
 app = Flask(__name__)
 limiter = Limiter(app, key_func=static_limiter_key)
 
+@app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 @limiter.limit(os.environ['LIMIT_RATE'])
 def _proxy(*args, **kwargs):
