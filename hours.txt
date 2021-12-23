@@ -6,4 +6,4 @@
 
 0.30 Setup basic flask app proxy
 0.30 Try to remove extra headers
-
+0.10 Add a rate limiter
