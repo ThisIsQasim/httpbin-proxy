@@ -1,4 +1,9 @@
 0.15 Initial repo and proxy setup
 0.10 Research on nginx rate limiting
 1.30 Debugging rate limiting
-0.10 finishing touches
+0.10 Finishing touches
+
+
+0.30 Setup basic flask app proxy
+0.30 Try to remove extra headers
+

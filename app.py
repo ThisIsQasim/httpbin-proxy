@@ -1,11 +1,17 @@
 from flask import Flask, request, Response
+from flask_limiter import Limiter
 import requests, os
 
-app = Flask(__name__)
+def static_limiter_key():
+    return os.environ['UPSTREAM_URL']
 
-# https://stackoverflow.com/a/36601467
+app = Flask(__name__)
+limiter = Limiter(app, key_func=static_limiter_key)
+
 @app.route('/<path:path>')
+@limiter.limit(os.environ['LIMIT_RATE'])
 def _proxy(*args, **kwargs):
+    # https://stackoverflow.com/a/36601467
     resp = requests.request(
         method=request.method,
         url=request.url.replace(request.host_url, os.environ['UPSTREAM_URL']),
